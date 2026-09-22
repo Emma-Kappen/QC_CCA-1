@@ -1,0 +1,13 @@
+/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pycache/
+/.venv
+/.vscode
+/.ipynb_checkpoints
+/.mypy_cache
+/.pytest_cache
+/.coverage
+/.cache/
+/.idea/

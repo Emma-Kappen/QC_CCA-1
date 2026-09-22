@@ -1,0 +1,31 @@
+# Verified working set (tested end-to-end on Python 3.12).
+#
+# The qiskit stack is pinned for reproducibility. numpy / scipy / scikit-learn are
+# intentionally left UNPINNED: qiskit-machine-learning 0.9.1 requires numpy>=2.0, which
+# conflicts with the older pins the Colab original carried (scipy==1.11.4 needs numpy<1.28,
+# scikit-learn==1.3.2 needs numpy<2.0). Pinning all of those together is unsatisfiable and
+# pip fails with a resolution error. Letting pip choose compatible modern releases resolves
+# cleanly.
+
+qiskit==2.5.2
+qiskit-aer==0.17.2
+qiskit-machine-learning==0.9.1
+qiskit-ibm-runtime==0.47.0
+
+scikit-learn
+scipy
+numpy
+pandas
+matplotlib
+pylatexenc          # needed by feature_map.draw("mpl")
+
+# Jupyter kernel support so VS Code can run the notebook against this venv.
+ipykernel
+ipywidgets
+
+# --- Optional: NVIDIA GPU acceleration -------------------------------------------------
+# The notebook auto-detects GPU and silently falls back to CPU, so this is not required.
+# Only if you have a CUDA-capable NVIDIA GPU, install ONE of these INSTEAD of qiskit-aer:
+#   pip uninstall qiskit-aer && pip install qiskit-aer-gpu          # CUDA 12
+#   pip uninstall qiskit-aer && pip install qiskit-aer-gpu-cu11     # CUDA 11
+# There is no GPU build for macOS (Apple Silicon included) or for AMD GPUs.
